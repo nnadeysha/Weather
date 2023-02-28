@@ -1,1 +1,18 @@
-<p>weather works!</p>
+<!-- <input type="text" class="mg-2 border py-2 px-4 w-[500px]" placeholder="Search" [(ngModel)]="term"> -->
+
+<div>
+  <input type="text" #city placeholder="Input city">
+  <button (click)="getCity(city.value)">Search</button>
+</div>
+
+<div *ngIf="weather">
+  <div>
+    <p>{{weather.name}}</p>
+    <p>{{weather.weather[0].description | titlecase}}</p>
+    <p>{{weather.main.temp | number: '1.0-0'}}°C</p>
+  </div>
+  <p>{{weather.main.temp_min | number: '1.0-0'}}°C</p>
+  <p>{{weather.main.temp_max | number: '1.0-0'}}°C</p>
+  <p>{{weather.main.humidity| number: '1.0-0'}}%</p>
+  <p>{{weather.wind.speed}} m/s</p>
+</div>

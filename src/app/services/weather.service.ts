@@ -1,5 +1,9 @@
 import { IWeather, IWeatherData } from './../../models/weather';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpParams,
+} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
 import { ErrorService } from './error.service';
@@ -9,16 +13,23 @@ import { ErrorService } from './error.service';
 })
 export class WeatherService {
   apiKey = 'acc15865bcf9f67a7111310944bdfafe';
-
+  url = 'https://api.openweathermap.org/data/2.5/weather';
   constructor(
     private httpClient: HttpClient,
     private errorService: ErrorService
   ) {}
 
   getWeather(city: string, units: string): Observable<IWeatherData> {
+    let params = new HttpParams()
+      .set('q', city)
+      .set('units', units)
+      .set('appid', this.apiKey);
+
     return this.httpClient
       .get<IWeatherData>(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&lang=en&appid=${this.apiKey}&units=${units}`
+        this.url,
+        { params }
+        /* `https://api.openweathermap.org/data/2.5/weather?q=${city}&lang=en&appid=${this.apiKey}&units=${units}` */
       )
       .pipe(catchError(this.errorHandler.bind(this)));
   }
