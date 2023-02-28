@@ -12,5 +12,12 @@ body {
 }
 
 .p-button {
-  padding: 5px !important
+  padding: 5px !important;
+  background: transparent !important;
+  color: #fff!important;
+}
+.p-selectbutton .p-button.p-highlight {
+    background: #fff !important;
+    border-color: #fff!important;
+    color: #000000!important;
 }

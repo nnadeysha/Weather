@@ -9,18 +9,43 @@
 
   </div>
   <div class="card_main">
-    <p>Now in {{weather.name}} {{weather.main.temp | number: '1.0-0'}} {{units === 'metric'? '°C' : '℉'}}</p>
-    <p>{{weather.weather[0].description | titlecase}}</p>
+    <div>
+      <p>Now in <span [ngStyle]="{fontWeight:'bold', fontSize: '18px'}">{{weather.name}} {{weather.main.temp | number:
+          '1.0-0'}} {{units
+          === 'metric'? '°C' : '℉'}}</span> and
+        <span [ngStyle]="{fontWeight:'bold',fontSize: '18px'}">{{weather.weather[0].main| titlecase}}</span>
+      </p>
+
+
+    </div>
+    <div class="card_advice">
+      <img [src]="'http://openweathermap.org/img/wn/' + weather.weather[0].icon + '@2x.png'" alt="weather icon">
+    </div>
   </div>
+
   <div class="card_footer">
-    <p>{{weather.main.temp_min | number: '1.0-0'}} {{units === 'metric'? '°C' : '℉'}}</p>
-    <p>{{weather.main.temp_max | number: '1.0-0'}} {{units === 'metric'? '°C' : '℉'}}</p>
-    <p>{{weather.main.humidity| number: '1.0-0'}}%</p>
-    <p>{{weather.wind.speed}} {{units === 'metric'? 'm/s' : 'mph'}} </p>
+    <div class="card_wrap">
+      <div class="card_icon-container">
+        <img class="icon" src="assets/icons/mintemp.png" alt="tempmin">
+        <p>{{weather.main.temp_min | number: '1.0-0'}} {{units === 'metric'? '°C' : '℉'}}</p>
+      </div>
+      <div class="card_icon-container">
+        <img class="icon" src="assets/icons/maxtemp.png" alt="maxtemp">
+        <p>{{weather.main.temp_max | number: '1.0-0'}} {{units === 'metric'? '°C' : '℉'}}</p>
+      </div>
+      <div class="card_icon-container">
+        <img class="icon" src="assets/icons/hum.png" alt="humidity">
+        <p>{{weather.main.humidity| number: '1.0-0'}} %</p>
+      </div>
+      <div class="card_icon-container">
+        <img class="icon" src="assets/icons/wind.png" alt="wind">
+        <p>{{weather.wind.speed}} {{units === 'metric'? 'm/s' : 'mph'}} </p>
+      </div>
+    </div>
     <div>
       <p-selectButton (click)="getWeatherData()" [options]="stateOptions" [(ngModel)]="units" optionLabel="label"
         optionValue="value" [style]="{
-        marginTop: '50px'
+        marginTop: '20px'
       }"></p-selectButton>
     </div>
 

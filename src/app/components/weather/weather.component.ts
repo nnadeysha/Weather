@@ -8,10 +8,12 @@ import { WeatherService } from 'src/app/services/weather.service';
   styleUrls: ['./weather.component.scss'],
 })
 export class WeatherComponent implements OnInit {
-  weather: IWeatherData;
   @Input() city: string;
   @Input() units: string;
+  weather: IWeatherData;
+  weatherIconUrl: string;
   stateOptions: any[];
+
   constructor(private weatherService: WeatherService) {
     this.stateOptions = [
       { label: 'metric', value: 'metric' },
@@ -31,5 +33,7 @@ export class WeatherComponent implements OnInit {
         this.units ? this.units : 'metric'
       )
       .subscribe((res) => (this.weather = res));
+
+    this.weatherIconUrl = ``;
   }
 }

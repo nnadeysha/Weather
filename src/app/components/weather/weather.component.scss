@@ -15,7 +15,11 @@
           justify-content: space-between;
         }
 
-
+        &_main {
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+        }
         &_footer {
           width: 100%;
           display: flex;
@@ -24,6 +28,12 @@
           align-items: center;
         }
 
+        &_wrap {
+          display: flex;
+          flex-direction: column;
+          width: 100px;
+          margin: 0 auto;
+        }
 
         &_search{
           background-color: #232d38;
@@ -39,6 +49,16 @@
           }
         }
 
+        &_icon-container {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+
+
 
 }
 
+.icon {
+  width: 20px;
+}
