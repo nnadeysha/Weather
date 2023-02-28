@@ -39,10 +39,20 @@ export class WeatherComponent implements OnInit {
   }
 
   getAdvice(temp: number, cyclone: number) {
-    if (temp < 0 && cyclone >= 600) {
-      // расписать свитч кейсом для разных ситуаций
+    if (temp < 30 || cyclone === 771 || cyclone === 781) {
       this.advice = 'Stay at home';
-      console.log('Stay at home');
+    }
+    if (temp < 0) {
+      this.advice = 'Dress warmly';
+    }
+    if (cyclone < 600) {
+      this.advice = "Don't forget to take an umbrella";
+    }
+    if (temp > 0 && cyclone >= 800 && cyclone < 804) {
+      this.advice = "Don't forget to use sunscreen";
+    }
+    if (temp > 25) {
+      this.advice = 'Avoid direct sunlight and drink more water';
     }
   }
 }
