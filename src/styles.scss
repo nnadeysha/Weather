@@ -1,1 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
+html{height: 100%;}
+body {
+  margin: 0;
+  position:relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  background-image: url('./assets/cardbg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.p-button {
+  padding: 5px !important
+}

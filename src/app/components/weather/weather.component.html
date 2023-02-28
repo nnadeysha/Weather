@@ -1,18 +1,28 @@
-<!-- <input type="text" class="mg-2 border py-2 px-4 w-[500px]" placeholder="Search" [(ngModel)]="term"> -->
+<div *ngIf="weather" class="card">
 
-<div>
-  <input type="text" #city placeholder="Input city">
-  <button (click)="getCity(city.value)">Search</button>
-</div>
+  <div class="card_header">
+    <input type="text" [(ngModel)]="city" placeholder="Input city" class="card_search" />
 
-<div *ngIf="weather">
-  <div>
-    <p>{{weather.name}}</p>
-    <p>{{weather.weather[0].description | titlecase}}</p>
-    <p>{{weather.main.temp | number: '1.0-0'}}°C</p>
+    <button (click)="getWeatherData()" pButton pRipple type="button" icon="pi pi-search"
+      class="p-button-rounded p-button-secondary"></button>
+
+
   </div>
-  <p>{{weather.main.temp_min | number: '1.0-0'}}°C</p>
-  <p>{{weather.main.temp_max | number: '1.0-0'}}°C</p>
-  <p>{{weather.main.humidity| number: '1.0-0'}}%</p>
-  <p>{{weather.wind.speed}} m/s</p>
+  <div class="card_main">
+    <p>Now in {{weather.name}} {{weather.main.temp | number: '1.0-0'}} {{units === 'metric'? '°C' : '℉'}}</p>
+    <p>{{weather.weather[0].description | titlecase}}</p>
+  </div>
+  <div class="card_footer">
+    <p>{{weather.main.temp_min | number: '1.0-0'}} {{units === 'metric'? '°C' : '℉'}}</p>
+    <p>{{weather.main.temp_max | number: '1.0-0'}} {{units === 'metric'? '°C' : '℉'}}</p>
+    <p>{{weather.main.humidity| number: '1.0-0'}}%</p>
+    <p>{{weather.wind.speed}} {{units === 'metric'? 'm/s' : 'mph'}} </p>
+    <div>
+      <p-selectButton (click)="getWeatherData()" [options]="stateOptions" [(ngModel)]="units" optionLabel="label"
+        optionValue="value" [style]="{
+        marginTop: '50px'
+      }"></p-selectButton>
+    </div>
+
+  </div>
 </div>

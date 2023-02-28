@@ -1,6 +1,5 @@
-import { IWeather, IWeatherData } from './../../../models/weather';
-import { map, Observable, tap } from 'rxjs';
-import { Component, OnInit } from '@angular/core';
+import { IWeatherData } from './../../../models/weather';
+import { Component, Input, OnInit } from '@angular/core';
 import { WeatherService } from 'src/app/services/weather.service';
 
 @Component({
@@ -10,16 +9,27 @@ import { WeatherService } from 'src/app/services/weather.service';
 })
 export class WeatherComponent implements OnInit {
   weather: IWeatherData;
-  term = '';
-  constructor(private weatherService: WeatherService) {}
-
-  ngOnInit() {
-    this.getCity('Moscow');
+  @Input() city: string;
+  @Input() units: string;
+  stateOptions: any[];
+  constructor(private weatherService: WeatherService) {
+    this.stateOptions = [
+      { label: 'metric', value: 'metric' },
+      { label: 'imperial', value: 'imperial' },
+    ];
   }
 
-  getCity(city: string) {
+  ngOnInit() {
+    this.getWeatherData();
+    this.units = 'metric';
+  }
+
+  getWeatherData() {
     this.weatherService
-      .getWeather(city, 'metric')
+      .getWeather(
+        this.city ? this.city : 'Moscow',
+        this.units ? this.units : 'metric'
+      )
       .subscribe((res) => (this.weather = res));
   }
 }
