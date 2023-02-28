@@ -11,8 +11,8 @@ export class WeatherComponent implements OnInit {
   @Input() city: string;
   @Input() units: string;
   weather: IWeatherData;
-  weatherIconUrl: string;
   stateOptions: any[];
+  advice: string;
 
   constructor(private weatherService: WeatherService) {
     this.stateOptions = [
@@ -32,8 +32,17 @@ export class WeatherComponent implements OnInit {
         this.city ? this.city : 'Moscow',
         this.units ? this.units : 'metric'
       )
-      .subscribe((res) => (this.weather = res));
+      .subscribe((res) => {
+        this.weather = res;
+        this.getAdvice(res.main.temp, res.weather[0].id);
+      });
+  }
 
-    this.weatherIconUrl = ``;
+  getAdvice(temp: number, cyclone: number) {
+    if (temp < 0 && cyclone >= 600) {
+      // расписать свитч кейсом для разных ситуаций
+      this.advice = 'Stay at home';
+      console.log('Stay at home');
+    }
   }
 }
