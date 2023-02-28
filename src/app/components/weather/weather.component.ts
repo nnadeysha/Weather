@@ -16,8 +16,8 @@ export class WeatherComponent implements OnInit {
 
   constructor(private weatherService: WeatherService) {
     this.stateOptions = [
-      { label: 'metric', value: 'metric' },
-      { label: 'imperial', value: 'imperial' },
+      { label: '°C', value: 'metric' },
+      { label: '℉', value: 'imperial' },
     ];
   }
 
@@ -39,6 +39,9 @@ export class WeatherComponent implements OnInit {
   }
 
   getAdvice(temp: number, cyclone: number) {
+    if (this.units === 'imperial') {
+      temp = (temp - 32) / 1.8;
+    }
     if (temp < 30 || cyclone === 771 || cyclone === 781) {
       this.advice = 'Stay at home';
     }

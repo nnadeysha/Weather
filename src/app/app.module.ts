@@ -8,9 +8,10 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { FormsModule } from '@angular/forms';
 import { SelectButtonModule } from 'primeng/selectbutton';
+import { GlobalErrorsComponent } from './components/global-errors/global-errors.component';
 
 @NgModule({
-  declarations: [AppComponent, WeatherComponent],
+  declarations: [AppComponent, WeatherComponent, GlobalErrorsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
