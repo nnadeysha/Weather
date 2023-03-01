@@ -7,8 +7,8 @@
       <span *ngIf="cityValue.invalid" class="invalid">Сity name must be in English!</span>
     </div>
 
-    <button [disabled]="cityValue.invalid" (click)="getWeatherData()" pButton pRipple type="button" icon="pi pi-search"
-      class="p-button-rounded p-button-secondary"></button>
+    <button [disabled]="cityValue.invalid" (click)="getWeatherDataToday()" pButton pRipple type="button"
+      icon="pi pi-search" class="p-button-rounded p-button-secondary"></button>
 
   </div>
 
@@ -16,7 +16,7 @@
     <div class="card_main-content">
       <span>Now in </span>
       <span class="card_text-data">
-        {{weather.name}}
+        {{cityName}}
       </span>
       <span class="card_text-data" [ngStyle]="{
         display: 'flex',
@@ -33,6 +33,18 @@
     <div [ngStyle]="{textAlign: 'center', fontSize: '20px'}">
       {{advice}}
     </div>
+
+    <div class="card_main-forecast" [ngStyle]="{display: 'flex', marginTop: '20px' }">
+      <div *ngFor="let forecast of weeklyForecast" [ngStyle]="{padding: '5px'}">
+        <span [ngStyle]="{fontSize: '12px'}">{{forecast.date | date: 'EEE, dd MMM'}}</span>
+        <div><span>{{forecast.temp | number:'1.0-0'}}
+            {{units === 'metric'? '°C' : '℉'}}</span>
+          <img [src]="'http://openweathermap.org/img/wn/' + forecast.icon + '@2x.png'" alt="weather icon"
+            [ngStyle]="{width: '20px'}">
+        </div>
+
+      </div>
+    </div>
   </div>
 
 
@@ -48,7 +60,7 @@
       </div>
     </div>
     <div>
-      <p-selectButton (click)="getWeatherData()" [options]="stateOptions" [(ngModel)]="units" optionLabel="label"
+      <p-selectButton (click)="getWeatherDataToday()" [options]="stateOptions" [(ngModel)]="units" optionLabel="label"
         optionValue="value" [style]="{
         marginTop: '20px'
       }"></p-selectButton>

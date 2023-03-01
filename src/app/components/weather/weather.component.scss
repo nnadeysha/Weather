@@ -39,6 +39,8 @@
           flex-direction: column;
           justify-content: space-between;
           align-items: center;
+
+
         }
 
         &_wrap {
@@ -46,6 +48,9 @@
           flex-direction: column;
           width: 100px;
           margin: 0 auto;
+          @media (max-width: 500px){
+          display: none;
+        }
         }
 
         &_form {

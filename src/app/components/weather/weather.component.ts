@@ -1,6 +1,12 @@
+import {
+  IForecastData,
+  IWeeklyForecast,
+  IListForecast,
+} from './../../../models/forecast';
 import { IWeatherData } from './../../../models/weather';
 import { Component, Input, OnInit } from '@angular/core';
 import { WeatherService } from 'src/app/services/weather.service';
+import { getLocaleDateFormat } from '@angular/common';
 
 @Component({
   selector: 'app-weather',
@@ -10,9 +16,12 @@ import { WeatherService } from 'src/app/services/weather.service';
 export class WeatherComponent implements OnInit {
   @Input() city: string;
   @Input() units: string;
-  weather: IWeatherData;
+  weather: IListForecast;
+  forecast: IForecastData;
   stateOptions: any[];
   advice: string;
+  weeklyForecast: IWeeklyForecast[] = [];
+  cityName: string;
 
   constructor(private weatherService: WeatherService) {
     this.stateOptions = [
@@ -22,20 +31,32 @@ export class WeatherComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getWeatherData();
+    this.getWeatherDataToday();
     this.units = 'metric';
   }
 
-  getWeatherData() {
-    this.weatherService
-      .getWeather(
-        this.city ? this.city : 'Moscow',
-        this.units ? this.units : 'metric'
-      )
-      .subscribe((res) => {
-        this.weather = res;
-        this.getAdvice(res.main.temp, res.weather[0].id);
+  getWeatherDataToday() {
+    this.city = this.city ? this.city : 'Moscow';
+    this.units = this.units ? this.units : 'metric';
+
+    this.weatherService.getForecast(this.city, this.units).subscribe((res) => {
+      this.forecast = res;
+      this.weather = res.list[0];
+      this.cityName = this.forecast.city.name;
+      this.getAdvice(this.weather.main.temp, this.weather.weather[0].id);
+      this.getWeeklyForecast(this.forecast.list);
+    });
+  }
+
+  getWeeklyForecast(data: IListForecast[]) {
+    this.weeklyForecast = [];
+    for (let i = 0; i < data.length; i = i + 8) {
+      this.weeklyForecast.push({
+        date: data[i].dt_txt,
+        temp: data[i].main.temp,
+        icon: data[i].weather[0].icon,
       });
+    }
   }
 
   getAdvice(temp: number, cyclone: number) {
