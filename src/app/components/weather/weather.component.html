@@ -7,8 +7,7 @@
       <span *ngIf="cityValue.invalid" class="invalid">Сity name must be in English!</span>
     </div>
 
-
-    <button (click)="getWeatherData()" pButton pRipple type="button" icon="pi pi-search"
+    <button [disabled]="cityValue.invalid" (click)="getWeatherData()" pButton pRipple type="button" icon="pi pi-search"
       class="p-button-rounded p-button-secondary"></button>
 
   </div>
