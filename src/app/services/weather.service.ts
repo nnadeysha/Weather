@@ -26,11 +26,7 @@ export class WeatherService {
       .set('appid', this.apiKey);
 
     return this.httpClient
-      .get<IWeatherData>(
-        this.url,
-        { params }
-        /* `https://api.openweathermap.org/data/2.5/weather?q=${city}&lang=en&appid=${this.apiKey}&units=${units}` */
-      )
+      .get<IWeatherData>(this.url, { params })
       .pipe(catchError(this.errorHandler.bind(this)));
   }
 

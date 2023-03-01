@@ -14,11 +14,24 @@
   </div>
 
   <div class="card_main">
-    <p>Now in <span [ngStyle]="{fontWeight:'bold', fontSize: '18px'}">{{weather.name}} {{weather.main.temp | number:
-        '1.0-0'}} {{units
-        === 'metric'? '°C' : '℉'}}</span> and
-      <span [ngStyle]="{fontWeight:'bold',fontSize: '18px'}">{{weather.weather[0].main| titlecase}}</span>
-    </p>
+    <div [ngStyle]="{
+        display: 'flex'
+      }">
+      <span>Now in </span>
+      <span class="card_text-data">
+        {{weather.name}}
+      </span>
+      <span class="card_text-data" [ngStyle]="{
+        display: 'flex',
+        width: '50px'
+      }">
+        {{weather.main.temp | number:'1.0-0'}}
+        {{units === 'metric'? '°C' : '℉'}}
+      </span> and
+      <span class="card_text-data">
+        {{weather.weather[0].main| titlecase}}
+      </span>
+    </div>
     <img [src]="'http://openweathermap.org/img/wn/' + weather.weather[0].icon + '@2x.png'" alt="weather icon">
     <div [ngStyle]="{textAlign: 'center', fontSize: '20px'}">
       {{advice}}

@@ -9,9 +9,10 @@ import { ButtonModule } from 'primeng/button';
 import { FormsModule } from '@angular/forms';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { GlobalErrorsComponent } from './components/global-errors/global-errors.component';
+import { ForecastComponent } from './components/forecast/forecast.component';
 
 @NgModule({
-  declarations: [AppComponent, WeatherComponent, GlobalErrorsComponent],
+  declarations: [AppComponent, WeatherComponent, GlobalErrorsComponent, ForecastComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
