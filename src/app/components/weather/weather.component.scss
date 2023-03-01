@@ -33,6 +33,12 @@
           flex-direction: column;
         }
         }
+
+        &_main-forecast {
+          display: flex;
+          margin-top: 20px
+        }
+
         &_footer {
           width: 100%;
           display: flex;
@@ -100,4 +106,14 @@
 
 .icon {
   width: 20px;
+}
+
+.forecast-element {
+  width: 73px;
+  padding: 5px;
+
+  @media (max-width: 500px){
+          width: 50px;
+          font-size: 10px;
+        }
 }
