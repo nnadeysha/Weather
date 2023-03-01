@@ -42,10 +42,10 @@ export class WeatherComponent implements OnInit {
     if (this.units === 'imperial') {
       temp = (temp - 32) / 1.8;
     }
-    if (temp < 30 || cyclone === 771 || cyclone === 781) {
+    if (temp < -30 || cyclone === 771 || cyclone === 781) {
       this.advice = 'Stay at home';
     }
-    if (temp < 0) {
+    if (temp <= 0) {
       this.advice = 'Dress warmly';
     }
     if (cyclone < 600) {
@@ -56,6 +56,9 @@ export class WeatherComponent implements OnInit {
     }
     if (temp > 25) {
       this.advice = 'Avoid direct sunlight and drink more water';
+    }
+    if (temp > 0 && cyclone === 804) {
+      this.advice = "Don't forget to take an umbrella, it might rain";
     }
   }
 }
