@@ -36,10 +36,10 @@
           {{forecast.date | date: 'EEE, dd MMM'}}
         </span>
         <div>
-          <span>
+          <div [ngStyle]="{fontSize: '12px'}">
             {{forecast.temp | number:'1.0-0'}}
             {{units === 'metric'? '°C' : '℉'}}
-          </span>
+          </div>
           <img [src]="'http://openweathermap.org/img/wn/' + forecast.icon + '@2x.png'" alt="weather icon"
             [ngStyle]="{width: '20px'}">
         </div>
