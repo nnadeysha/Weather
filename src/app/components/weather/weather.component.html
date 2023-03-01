@@ -1,9 +1,16 @@
 <div *ngIf="weather" class="card">
 
   <div class="card_header">
-    <input type="text" [(ngModel)]="city" placeholder="Input city" class="card_search" pattern="[a-zA-Z ]*" />
+    <div class="card_form">
+      <input type="text" [(ngModel)]="city" #cityValue="ngModel" placeholder="Input city" class="card_search"
+        pattern="[a-zA-Z ]*" />
+      <span *ngIf="cityValue.invalid" class="invalid">Сity name must be in English!</span>
+    </div>
+
+
     <button (click)="getWeatherData()" pButton pRipple type="button" icon="pi pi-search"
       class="p-button-rounded p-button-secondary"></button>
+
   </div>
 
   <div class="card_main">
