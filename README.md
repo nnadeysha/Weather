@@ -1,27 +1,32 @@
-# Weather
+## Deploy https://weather-nnadeysha.netlify.app/
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.0.
+## This project was created with [The Angular CLI](https://angular.io/guide/setup-local)
 
-## Development server
+* Angular
+* PrimeNG
+* TypeScript
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Getting Start
+To install the project, please, download it or clone, and then use
 
-## Code scaffolding
+```sh
+npm i or npm install
+```
+## Available Scripts
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### To run the application in a browser, use the command
 
-## Build
+```sh
+ng serve
+```
+Open [http://localhost:4200](http://localhost:4200) to view it in
+the browser.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+### To build applications, use the command
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```sh
+ng build
+```
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Builds the app for production to the `dist` folder.<br />
