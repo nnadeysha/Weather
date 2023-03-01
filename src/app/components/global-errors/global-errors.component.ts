@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { ErrorService } from 'src/app/services/error.service';
 
 @Component({
@@ -7,5 +8,11 @@ import { ErrorService } from 'src/app/services/error.service';
   styleUrls: ['./global-errors.component.scss'],
 })
 export class GlobalErrorsComponent {
+  isClosed: BehaviorSubject<false>;
   constructor(public errorServ: ErrorService) {}
+
+  onClose() {
+    console.log(!this.isClosed);
+    return !this.isClosed;
+  }
 }

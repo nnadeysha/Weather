@@ -2,15 +2,11 @@
 
   <div class="card_header">
     <input type="text" [(ngModel)]="city" placeholder="Input city" class="card_search" pattern="[a-zA-Z ]*" />
-
-
     <button (click)="getWeatherData()" pButton pRipple type="button" icon="pi pi-search"
       class="p-button-rounded p-button-secondary"></button>
-
-
   </div>
-  <div class="card_main">
 
+  <div class="card_main">
     <p>Now in <span [ngStyle]="{fontWeight:'bold', fontSize: '18px'}">{{weather.name}} {{weather.main.temp | number:
         '1.0-0'}} {{units
         === 'metric'? '°C' : '℉'}}</span> and
@@ -20,20 +16,11 @@
     <div [ngStyle]="{textAlign: 'center', fontSize: '20px'}">
       {{advice}}
     </div>
-
   </div>
 
 
   <div class="card_footer">
     <div class="card_wrap">
-      <!-- <div class="card_icon-container">
-        <p></p>
-        <p>{{weather.main.temp_min | number: '1.0-0'}} {{units === 'metric'? '°C' : '℉'}}</p>
-      </div>
-      <div class="card_icon-container">
-        <img class="icon" src="assets/icons/maxtemp.png" alt="maxtemp">
-        <p>{{weather.main.temp_max | number: '1.0-0'}} {{units === 'metric'? '°C' : '℉'}}</p>
-      </div> -->
       <div class="card_icon-container">
         <img class="icon" src="assets/icons/hum.png" alt="humidity">
         <p>{{weather.main.humidity| number: '1.0-0'}} %</p>
@@ -49,6 +36,6 @@
         marginTop: '20px'
       }"></p-selectButton>
     </div>
-
   </div>
+
 </div>

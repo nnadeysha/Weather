@@ -1,3 +1,9 @@
-<div *ngIf="errorServ.error$ | async as error" class="">
+<div *ngIf="errorServ.error$ | async as error" [ngClass]="isClosed ? 'close': 'global-error' ">
   {{error}}
+  <button (click)="errorServ.clear()" pButton pRipple type="button" icon="pi pi-times"
+    class="p-button-rounded p-button-danger p-button-text" [style]="{
+      position: 'absolute',
+      top: '5px',
+      right: '10px'
+    }"></button>
 </div>
