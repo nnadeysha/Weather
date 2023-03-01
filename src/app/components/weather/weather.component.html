@@ -1,0 +1,60 @@
+<div *ngIf="weather" class="card">
+
+  <div class="card_header">
+    <div class="card_form">
+      <input type="text" [(ngModel)]="city" #cityValue="ngModel" placeholder="Input city" class="card_search"
+        pattern="[a-zA-Z ]*" />
+      <span *ngIf="cityValue.invalid" class="invalid">Сity name must be in English!</span>
+    </div>
+
+    <button [disabled]="cityValue.invalid" (click)="getWeatherData()" pButton pRipple type="button" icon="pi pi-search"
+      class="p-button-rounded p-button-secondary"></button>
+
+  </div>
+
+  <div class="card_main">
+    <div [ngStyle]="{
+        display: 'flex'
+      }">
+      <span>Now in </span>
+      <span class="card_text-data">
+        {{weather.name}}
+      </span>
+      <span class="card_text-data" [ngStyle]="{
+        display: 'flex',
+        width: '50px'
+      }">
+        {{weather.main.temp | number:'1.0-0'}}
+        {{units === 'metric'? '°C' : '℉'}}
+      </span> and
+      <span class="card_text-data">
+        {{weather.weather[0].main| titlecase}}
+      </span>
+    </div>
+    <img [src]="'http://openweathermap.org/img/wn/' + weather.weather[0].icon + '@2x.png'" alt="weather icon">
+    <div [ngStyle]="{textAlign: 'center', fontSize: '20px'}">
+      {{advice}}
+    </div>
+  </div>
+
+
+  <div class="card_footer">
+    <div class="card_wrap">
+      <div class="card_icon-container">
+        <img class="icon" src="assets/icons/hum.png" alt="humidity">
+        <p>{{weather.main.humidity| number: '1.0-0'}} %</p>
+      </div>
+      <div class="card_icon-container">
+        <img class="icon" src="assets/icons/wind.png" alt="wind">
+        <p>{{weather.wind.speed}} {{units === 'metric'? 'm/s' : 'mph'}} </p>
+      </div>
+    </div>
+    <div>
+      <p-selectButton (click)="getWeatherData()" [options]="stateOptions" [(ngModel)]="units" optionLabel="label"
+        optionValue="value" [style]="{
+        marginTop: '20px'
+      }"></p-selectButton>
+    </div>
+  </div>
+
+</div>
