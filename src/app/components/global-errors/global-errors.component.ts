@@ -12,7 +12,6 @@ export class GlobalErrorsComponent {
   constructor(public errorServ: ErrorService) {}
 
   onClose() {
-    console.log(!this.isClosed);
     return !this.isClosed;
   }
 }
