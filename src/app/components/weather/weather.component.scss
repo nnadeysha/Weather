@@ -36,6 +36,7 @@
 
         &_main-forecast {
           display: flex;
+          flex-direction: row;
           margin-top: 20px
         }
 
@@ -108,12 +109,4 @@
   width: 20px;
 }
 
-.forecast-element {
-  width: 73px;
-  padding: 5px;
 
-  @media (max-width: 500px){
-          width: 50px;
-          font-size: 10px;
-        }
-}

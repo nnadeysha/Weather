@@ -3,10 +3,8 @@ import {
   IWeeklyForecast,
   IListForecast,
 } from './../../../models/forecast';
-import { IWeatherData } from './../../../models/weather';
 import { Component, Input, OnInit } from '@angular/core';
 import { WeatherService } from 'src/app/services/weather.service';
-import { getLocaleDateFormat } from '@angular/common';
 
 @Component({
   selector: 'app-weather',

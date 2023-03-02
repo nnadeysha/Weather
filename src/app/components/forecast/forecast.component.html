@@ -1,0 +1,19 @@
+<div class="forecast">
+  <p class="forecast_data">
+    {{forecast.date | date: 'EEE, '}}
+  </p>
+  <p class="forecast_data">
+    {{forecast.date | date: 'dd MMM'}}
+  </p>
+  <div>
+    <div class="forecast_data">
+      <p [ngStyle]="{
+        width: '15px'
+      }">
+        {{forecast.temp | number:'1.0-0'}}</p>
+      <p>{{units === 'metric'? '°C' : '℉'}}</p>
+    </div>
+    <img [src]="'http://openweathermap.org/img/wn/' + forecast.icon + '@2x.png'" alt="weather icon"
+      [ngStyle]="{width: '20px'}">
+  </div>
+</div>

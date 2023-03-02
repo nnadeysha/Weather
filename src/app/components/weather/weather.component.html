@@ -15,13 +15,20 @@
       <span class="card_text-data">
         {{cityName}}
       </span>
-      <span class="card_text-data" [ngStyle]="{
+      <p class="card_text-data" [ngStyle]="{
         display: 'flex',
-        width: '50px'
+        width: '50px',
+        padding: '0px 5px'
       }">
-        {{weather.main.temp | number:'1.0-0'}}
+        <span [ngStyle]="{
+        display: 'flex',
+        width: '30px'
+      }">
+          {{weather.main.temp | number:'1.0-0'}}
+        </span>
+
         {{units === 'metric'? '°C' : '℉'}}
-      </span> and
+      </p> and
       <span class="card_text-data">
         {{weather.weather[0].main| titlecase}}
       </span>
@@ -31,21 +38,12 @@
       {{advice}}
     </div>
     <div class="card_main-forecast">
-      <div *ngFor="let forecast of weeklyForecast" class="forecast-element">
-        <span [ngStyle]="{fontSize: '12px'}">
-          {{forecast.date | date: 'EEE, dd MMM'}}
-        </span>
-        <div>
-          <div [ngStyle]="{fontSize: '12px'}">
-            {{forecast.temp | number:'1.0-0'}}
-            {{units === 'metric'? '°C' : '℉'}}
-          </div>
-          <img [src]="'http://openweathermap.org/img/wn/' + forecast.icon + '@2x.png'" alt="weather icon"
-            [ngStyle]="{width: '20px'}">
-        </div>
-
+      <div *ngFor="let forecast of weeklyForecast">
+        <app-forecast [forecast]="forecast" [units]="units"></app-forecast>
       </div>
     </div>
+
+
   </div>
 
   <div class="card_footer">

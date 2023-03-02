@@ -10,6 +10,10 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 }
+p, div {
+  padding: 0;
+  margin: 0;
+}
 
 .p-button {
   padding: 5px !important;

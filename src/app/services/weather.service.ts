@@ -1,5 +1,4 @@
 import { IForecastData } from './../../models/forecast';
-import { IWeather, IWeatherData } from './../../models/weather';
 import {
   HttpClient,
   HttpErrorResponse,
@@ -14,7 +13,6 @@ import { ErrorService } from './error.service';
 })
 export class WeatherService {
   apiKey = 'acc15865bcf9f67a7111310944bdfafe';
-  urlWeather = 'https://api.openweathermap.org/data/2.5/weather';
   urlForecast = 'https://api.openweathermap.org/data/2.5/forecast';
   constructor(
     private httpClient: HttpClient,
